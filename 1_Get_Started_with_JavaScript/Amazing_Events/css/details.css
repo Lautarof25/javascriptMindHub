@@ -1,7 +1,33 @@
 main {
-    min-height: 85vh;
+    min-height: 83vh;
+    justify-content: center;
+    align-items: center;
+}
+.card_detail {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 1rem;
+    border: 1px solid;
+    padding: 1rem;
+    margin: 3rem 0;
 }
 
-main img {
+.card_detail img {
     filter: drop-shadow(-5px -5px 10px gray);
+    width: 100%;
+    max-width: 350px;
+    object-fit: cover;
+    object-position: center;
 }
+
+.card_detail > div {
+    padding: 1rem;
+    max-width: 350px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+

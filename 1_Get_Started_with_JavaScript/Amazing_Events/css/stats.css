@@ -1,4 +1,19 @@
+main {
+    align-items: center;
+}
+
+table {
+    margin-top: 2rem;
+}
+
 table, th, td {
     border-collapse: collapse;
     border: 1px solid;
+    text-align: left;
 }
+
+th {
+    font-size: 1.2rem;
+    background-color: var(--third-color);
+}
+

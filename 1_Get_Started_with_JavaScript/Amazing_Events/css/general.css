@@ -98,8 +98,8 @@ main {
 .container_1 form{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 2rem 1rem;
+    width: 100%;
 }
 
 fieldset {
@@ -110,6 +110,12 @@ form fieldset:first-child {
     display: flex;
     flex-wrap: wrap;
     grid-gap: 1rem;
+}
+form fieldset:last-child {
+    margin-left: auto;
+}
+form fieldset:last-child input {
+    width: 80%;
 }
 
 form button {

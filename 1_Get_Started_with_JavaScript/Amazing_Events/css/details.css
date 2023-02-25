@@ -1,3 +1,7 @@
+main {
+    min-height: 85vh;
+}
+
 main img {
     filter: drop-shadow(-5px -5px 10px gray);
 }

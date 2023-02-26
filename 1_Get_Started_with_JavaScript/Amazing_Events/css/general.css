@@ -71,16 +71,17 @@ header img:hover {
 nav ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     grid-gap: 5px;
 }
 
 nav ul li {
     width: 100px;
-    height: 50px;
+    height: 60px;
     text-align: center;
     background-color: var(--fourth-color);
-    padding: 0 5px;
+    padding: 5px;
     border-radius: 5px;
 
     display: flex;
@@ -92,6 +93,11 @@ nav ul li:hover {
     background-color: var(--second-color);
     cursor: pointer;
     transition: background-color .3s;
+}
+
+nav ul li > * {
+    /* Para que ocupe 100% de la caja y quede en el centro*/
+    padding: 15px;
 }
 
 .link-active {

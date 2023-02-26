@@ -106,7 +106,7 @@ nav ul li > * {
 
 .slider {
     background-color: var(--third-color);
-    height: 10vh;
+    min-height: 10vh;
 
     display: grid;
     place-items: center;

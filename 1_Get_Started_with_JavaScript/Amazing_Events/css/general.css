@@ -37,6 +37,11 @@ ul li {
     list-style: none;
 }
 
+.container_global {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 header img {
     width: 100px;
 }
@@ -45,13 +50,13 @@ header,footer {
     background-color: var(--first-color);
 }
 
-header {
+header .container_global {
     min-height: 10vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 5px 2rem;
 }
 
 nav ul {
@@ -158,19 +163,34 @@ form button {
     color: white;
     border: none;
     padding: .5rem;
+    cursor: pointer;
 }
 
-footer {
+footer .container_global {
     min-height: 7vh;
     font-size: 2rem;
 
     display: flex;
+    
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 5px 2rem;
+}
+
+footer .container_global div {
+    display: flex;
 }
 
 footer i {
     padding: 0 .5rem;
 }
+
+@media (max-width: 768px) { 
+    header .container_global {
+        justify-content: space-evenly;
+    }
+    footer .container_global {
+        flex-direction: column;    
+     }
+ }
 

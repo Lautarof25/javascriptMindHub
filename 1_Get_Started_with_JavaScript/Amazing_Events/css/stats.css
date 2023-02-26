@@ -17,3 +17,8 @@ th {
     background-color: var(--third-color);
 }
 
+@media (max-width: 576px) { 
+     main {
+        font-size: .8rem;
+     }
+ }

@@ -16,7 +16,7 @@ html {
     box-sizing: border-box;
 }
 /* Esconder scroll */
-::-webkit-scrollbar {
+main::-webkit-scrollbar {
     display: none;
 }
 
@@ -247,3 +247,10 @@ footer i {
         flex-direction: column;
     }
 }
+
+@media (max-width: 390px) { 
+     header nav {
+        height: 75px;
+        overflow-y: scroll;
+     }
+ }

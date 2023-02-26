@@ -16,7 +16,7 @@ html {
     box-sizing: border-box;
 }
 /* Esconder scroll */
-main::-webkit-scrollbar {
+::-webkit-scrollbar {
     display: none;
 }
 
@@ -130,7 +130,7 @@ nav ul li > * {
 
 .disabled-slider {
     color: grey;
-    cursor: none;
+    cursor: not-allowed;
 }
 
 main {
@@ -274,5 +274,7 @@ footer i {
      header nav {
         height: 75px;
         overflow-y: scroll;
+        overflow-x: hidden;
      }
+
  }

@@ -15,6 +15,10 @@
 html {
     box-sizing: border-box;
 }
+/* Esconder scroll */
+::-webkit-scrollbar {
+    display: none;
+}
 
 *,
 *::after,
@@ -104,12 +108,29 @@ nav ul li > * {
     background-color: var(--second-color);
 }
 
-.slider {
+.slider{
     background-color: var(--third-color);
     min-height: 10vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
 
-    display: grid;
-    place-items: center;
+.slider .container_global{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider p {
+    font-size: 3rem;
+}
+
+.disabled-slider {
+    color: grey;
+    cursor: none;
 }
 
 main {

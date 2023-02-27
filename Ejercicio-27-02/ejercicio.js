@@ -35,3 +35,11 @@ var vivienda = {
     con_garaje: true,
     terraza_accesible: true,
 }
+
+var objetos_unidos = [datos_persona,vehiculo,vehiculo]
+
+console.log(objetos_unidos)
+
+var union_datos = [datos_persona.nombre+" tiene un auto marca "+vehiculo.marca+" y vive en su casa ubicada en "+vivienda.ubicacion+" y su hobbie favorito es "+datos_persona.pasatiempos[2]]
+
+console.log(union_datos)

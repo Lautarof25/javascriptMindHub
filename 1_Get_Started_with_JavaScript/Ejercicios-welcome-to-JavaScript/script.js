@@ -10,9 +10,9 @@ let estado_civil = "En pareja"; // String
 let mascotas = true; // booleano
 let tipo_mascota = "perro"; // String
 const celular = {
-    marca: "Lg",
-    modelo: "lg-k8",
-    año: 2018,
+    marca: "TCL",
+    modelo: "20b",
+    año: 2021,
     numero: "1160382014",
     impermeable: true,
 } // Object

@@ -10,17 +10,20 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     grid-gap: 1rem;
-    border: 1px solid;
     padding: 1rem;
     margin: 3rem 0;
+    background-color: var(--fourth-color);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
 }
 
 .card_detail img {
-    filter: drop-shadow(-5px -5px 10px gray);
+    filter: drop-shadow(0 0 10px white);
     width: 100%;
     max-width: 350px;
     object-fit: cover;
     object-position: center;
+    border-radius: 5px;
 }
 
 .card_detail > div {

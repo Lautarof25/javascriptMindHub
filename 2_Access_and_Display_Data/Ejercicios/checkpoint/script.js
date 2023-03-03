@@ -3,18 +3,19 @@ var paises = ["Argentina","Francia","Brasil","Uruguay","Chile","Paraguay","Peru"
 // Busco el elemento body
 var body = document.querySelector("body");
 
-for (let i = 0; i < paises.length; i++) {
-    // Creo el elemento div
-    var div = document.createElement("div");
-    // Agrego a   body el element div
-    var element = body.appendChild(div);
-    var div_creado = document.querySelectorAll("div");
-    div_creado.className = "Hola"
-
-    div_creado.innerHTML = `
-        <p></p>
-    `
+function agregandoHTML(array){
+    for (let i = 0; i < paises.length; i++) {
+        body.innerHTML += `
+            <div class="card">
+                <p class="pais${i}">${paises[i]}</p>
+            </div>
+        `
+    }
 }
+// Llamando a la fución
+agregandoHTML(paises);
+
+
 
 
 

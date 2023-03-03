@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background-color: steelblue;
+    display: grid;
+    place-items: center;
+}
+
+.card p {
+    color: white;
+}

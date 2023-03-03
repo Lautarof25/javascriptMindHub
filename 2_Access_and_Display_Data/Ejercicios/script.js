@@ -1,3 +1,5 @@
+// Objetos y arrays
+
 var celular = {
     marca: "TCL",
     modelo: "20B",
@@ -25,7 +27,7 @@ console.log(celular);
 var arrayLenguajes = ["python", "java", "javascript", "html", "css", "php", "c", "c++", "go", "typescript"]
 var otroArray = ["1"]
 
-arrayLenguajes.length();
+console.log("lenght:",arrayLenguajes.length);
 
 arrayLenguajes.pop();
 arrayLenguajes.push("nuevoElemento");
@@ -37,10 +39,24 @@ arrayLenguajes.toString();
 arrayLenguajes.join("-");
 arrayLenguajes.concat(otroArray);
 
+console.log(arrayLenguajes)
+
+// Ejercicio Loops 
 
 
+for (let i = 0; i < arrayLenguajes.length; i++) {
+    console.log(arrayLenguajes[i])
+}
+
+var i = 0;
+
+while(i < arrayLenguajes.length){
+    console.log(arrayLenguajes[i]);
+    console.log("Soy el while")
+    i++;
+}
 
 
-
-
-
+for (props in celular){
+    console.log(props +": "+celular[props] )
+}

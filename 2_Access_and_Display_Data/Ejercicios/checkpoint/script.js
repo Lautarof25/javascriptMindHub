@@ -14,8 +14,3 @@ function agregandoHTML(array){
 }
 // Llamando a la fución
 agregandoHTML(paises);
-
-
-
-
-

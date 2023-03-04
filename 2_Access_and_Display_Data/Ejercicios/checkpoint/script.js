@@ -11,6 +11,11 @@ function agregandoHTML(array){
             </div>
         `
     }
+    var todos_paises = document.querySelector(".pais0");
+    console.log(todos_paises);
+    todos_paises.className = "losQueNoFueronCampeones";
+    var francia = document.querySelector(".pais1");
+    francia.style.color = "red";
 }
 // Llamando a la fución
 agregandoHTML(paises);

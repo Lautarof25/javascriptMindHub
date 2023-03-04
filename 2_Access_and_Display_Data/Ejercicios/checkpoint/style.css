@@ -20,3 +20,7 @@ body {
 .card p {
     color: white;
 }
+
+.losQueNoFueronCampeones {
+    color: yellow!important;
+}

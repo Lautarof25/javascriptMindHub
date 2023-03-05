@@ -209,3 +209,25 @@ ulAutos.innerHTML = numeroSort;
 
 ulAutos.innerHTML = numeroSortReves;
 // 54,22,17,11,1
+
+
+// ------------------ RETURN ------------------
+// Finaliza la ejecución de la función y especifica un valor para ser devuelto a quien llama a la función. Si se omite, undefined es retornado.
+
+function calculoCubo(x){
+    x*x*x;
+}
+
+console.log(calculoCubo(3)) // undefined
+
+//--
+
+function calculoCubo2(x){
+    return x*x*x;
+}
+
+console.log(calculoCubo2(3)); // 27
+
+
+
+

@@ -19,7 +19,23 @@ var numeros = "3,8,9,8.65,3.6965378,9";
 
 var separarNumeros = numeros.split(",");
 
-separarNumeros.forEach();
+var arrayNumeros = [];
 
-var maximo = Math.max(separarNumeros);
-var minimo = Math.min(separarNumeros);
+separarNumeros.forEach(numero =>
+    arrayNumeros.push((Number(numero)).toFixed(2))
+)
+
+arrayNumeros.sort();
+
+var arrayDescendente = [];
+
+for (let i = arrayNumeros.length; i >= 0; i--) {
+    arrayDescendente.push(arrayNumeros[i])
+}
+
+
+console.log(Math.max(...arrayNumeros));
+console.log(Math.min(...arrayNumeros));
+
+console.log(arrayNumeros);
+console.log(arrayDescendente);

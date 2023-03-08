@@ -72,6 +72,18 @@ header img:hover {
     filter: brightness(1.5);
 }
 
+header .toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+    z-index: 500;
+    position: absolute;
+    right: 1rem;
+}
+
 nav ul {
     display: flex;
     justify-content: center;
@@ -183,6 +195,11 @@ footer i:hover {
 
 /* Media query */
 @media (max-width: 768px) {
+    header {
+        position: sticky;
+        top: 0;
+    }
+
     header .container_global {
         justify-content: space-evenly;
     }
@@ -190,13 +207,36 @@ footer i:hover {
     footer .container_global {
         flex-direction: column;
     }
-}
+    .nav-menu {
+        flex-direction: column;
+        background-color: var(--second-color);
+        position: fixed;
+        top:10vh;
+        width: 100%;
+        align-items: center;
+        align-content: center;
+        justify-content: space-evenly;
+        padding: 20px 0;
+        height: calc(100% - 10vh);
+        overflow-y: auto;
+        z-index: 3000;
 
-@media (max-width: 390px) {
-    header nav {
-        height: 75px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        left: 100%;
+        transition: left .3s;
     }
-
+    nav ul li {
+        width: unset;
+        height: unset;
+        background-color: unset;
+    }
+    .nav-menu_visible {
+        left: 0;
+        z-index: 5000;
+    }
+    header .toggle {
+        display: block;
+    }
+    header .container_global {
+        justify-content: space-between;
+    }
 }

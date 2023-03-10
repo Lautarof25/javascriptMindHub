@@ -155,6 +155,7 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 /* Footer */
 footer .container_global {
     min-height: 7vh;

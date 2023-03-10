@@ -44,7 +44,7 @@ form button {
 
 .card {
     max-width: 250px;
-    padding: 1rem;
+    padding: .5rem;
     text-align: center;
     border-radius: 5px;
     background-color: var(--fourth-color);
@@ -81,7 +81,7 @@ form button {
     column-gap: 5px;
 }
 
-.card button {
+.card a {
     background-color: var(--third-color);
     color: white;
     border: none;
@@ -90,6 +90,6 @@ form button {
     border-radius: 5px;
 }
 
-.card button:hover {
+.card a:hover {
     background-color: var(--second-color);
 }

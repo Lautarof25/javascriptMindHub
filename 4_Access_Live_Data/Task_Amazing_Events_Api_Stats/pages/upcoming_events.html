@@ -16,8 +16,11 @@
     <header>
         <div class="container_global">
             <a href="../index.html"><img src="../Logos/Logo_Amazing_Events.png" alt="logo"></a>
+            <button class="toggle">
+                ≡
+            </button>
             <nav>
-                <ul>
+                <ul class="nav-menu">
                     <li><a href="../index.html">Home</a></li>
                     <li class="link-active">Upcoming Events</li>
                     <li><a href="./past_events.html">Past Events</a></li>
@@ -43,19 +46,13 @@
             <form>
                 <fieldset>
                     <label for="1">
-                        <input type="checkbox" id="1" name="1" value="1" checked>Category
+                        <input type="checkbox" id="1" name="1" value="1" checked> All events
                     </label>
                     <label for="2">
-                        <input type="checkbox" id="2" name="2" value="2">Category
+                        <input type="checkbox" id="2" name="2" value="2"> Upcoming events
                     </label>
                     <label for="3">
-                        <input type="checkbox" id="3" name="3" value="3">Category
-                    </label>
-                    <label for="4">
-                        <input type="checkbox" id="4" name="4" value="4">Category
-                    </label>
-                    <label for="5">
-                        <input type="checkbox" id="5" name="5" value="5">Category
+                        <input type="checkbox" id="3" name="3" value="3"> Past events
                     </label>
                 </fieldset>
                 <fieldset>
@@ -73,7 +70,7 @@
                 <p>Ven con tu personaje disfras mas aterrador para ganar increibles premios</p>
                 <div>
                     <p>Price 12</p>
-                    <button>see more...</button>
+                    <a href="../pages/details.html">see more...</a>
                 </div>
             </div>
             <div class="card">
@@ -84,7 +81,7 @@
                 <p>Unico recital de la banda mas emblematica</p>
                 <div>
                     <p>Price 150</p>
-                    <button>see more...</button>
+                    <a href="../pages/details.html">see more...</a>
                 </div>
             </div>
             <div class="card">
@@ -95,7 +92,7 @@
                 <p>Premier en 3d de Avengers de Marvel el inicio de una saga epica con tus mejores superheroes</p>
                 <div>
                     <p>Price 250</p>
-                    <button>see more...</button>
+                    <a href="../pages/details.html">see more...</a>
                 </div>
             </div>
         </div>
@@ -111,7 +108,7 @@
             <p>Cohort</p>
         </div>
     </footer>
-
+    <script src="../js/navbar.js"></script>
 </body>
 
 </html>

@@ -56,7 +56,12 @@ header img {
 header,
 footer {
     background-color: var(--first-color);
-    position: relative;
+}
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
 }
 
 header .container_global {
@@ -131,6 +136,18 @@ nav ul li>* {
     color: grey;
     cursor: not-allowed;
 }
+/* Button */
+
+header button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 2.5rem;
+    position: absolute;
+    right: 1rem;
+    display: none;
+}
+
 /* Main */
 main {
     background-color: var(--second-color);
@@ -138,6 +155,7 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 /* Footer */
 footer .container_global {
     min-height: 7vh;
@@ -183,20 +201,32 @@ footer i:hover {
 
 /* Media query */
 @media (max-width: 768px) {
-    header .container_global {
+    .toggle {
+        display: block;
+    }
+    .nav-menu {
+        position: fixed;
+        left: 100%;
+        top: 10vh;
+        transition: left .3s;
+        height: 90vh;
+        width: 100vw;
+        display: flex;
+        background-color: var(--second-color);
+        flex-direction: column;
         justify-content: space-evenly;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .nav-menu_visible{
+        left: 0;
+        z-index: 2000;
+    }
+    .nav-menu li {
+        background-color: transparent;
     }
 
     footer .container_global {
         flex-direction: column;
     }
-}
-
-@media (max-width: 390px) {
-    header nav {
-        height: 75px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-
 }

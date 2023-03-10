@@ -38,3 +38,8 @@ main {
     text-align: center;
 }
 
+@media (max-width: 768px){
+    .card_detail{
+        max-width: 485px;
+    }
+}

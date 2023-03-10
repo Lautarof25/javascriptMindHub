@@ -1,0 +1,40 @@
+main {
+    min-height: 83vh;
+    justify-content: center;
+    align-items: center;
+}
+.card_detail {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 1rem;
+    padding: 1rem;
+    margin: 3rem 0;
+    background-color: var(--fourth-color);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.card_detail img {
+    filter: drop-shadow(0 0 10px white);
+    width: 100%;
+    max-width: 350px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+
+.card_detail h1,.card_detail p {
+    border-top: 1px solid;
+}
+
+.card_detail > div {
+    padding: 1rem;
+    max-width: 350px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+

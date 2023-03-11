@@ -26,16 +26,19 @@ main {
     border-radius: 5px;
 }
 
-.card_detail h1,.card_detail p {
+.card_detail h1 {
     border-top: 1px solid;
+    border-bottom: 1px solid;
 }
 
 .card_detail > div {
     padding: 1rem;
     max-width: 350px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 @media (max-width: 768px){

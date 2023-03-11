@@ -20,7 +20,7 @@ for (let j = 0; j < eventos.length; j++) {
             </p>
             <div>
                 <p>Price: ${eventos[j].price}</p>
-                <a href="../pages/details.html">see more...</a>
+                <a href="./pages/details.html">see more...</a>
             </div>
         </div>
     `

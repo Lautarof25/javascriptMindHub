@@ -227,7 +227,3 @@ function calculoCubo2(x){
 }
 
 console.log(calculoCubo2(3)); // 27
-
-
-
-

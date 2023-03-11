@@ -2,31 +2,35 @@
 import data from '../js/amazingEvents.js';
 
 // Obtenemos cards de main
-const cards = document.querySelector("main .cards");
+const card_detail = document.querySelector("main .card_detail");
 // Obtenemos la fecha
 const fecha = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;
 
-// Imprimo las tarjetas
-for (let j = 0; j < eventos.length; j++) {
-    if (fecha >= eventos[j].date){
-        cards.innerHTML += `
-            <div class="card">
-                <div class="img">
-                     <img src="../Images/${getFinalUrlImage(j)}" alt="service">
-                </div>
-                <h2>${eventos[j].name}</h2>
-                <p>${eventos[j].description}
-                </p>
-                <div>
-                    <p>Price: ${eventos[j].price}</p>
-                    <a href="../pages/details.html">see more...</a>
-                </div>
-            </div>
-        `
-    }
+// Imprimo el detalle
+function printDetails(id){
+    card_detail.innerHTML += `
+    <img class="img_detail" src="../Images/${getFinalUrlImage(id)}" alt="product">
+    <div>
+        <h1>${eventos[id].name}</h1>
+        <span>Date: ${eventos[id].date}</span>
+        <p>${eventos[id].description}</p>
+        <ul>
+            <li>Category: ${eventos[id].category}</li>
+            <li>Place: ${eventos[id].place} C</li>
+            <li>Capacity: ${eventos[id].capacity}</li>
+            <!-- If upcoming -Estimate- else assistance -->
+            <li>Estimate: ${eventos[id].assistance}</li>
+            <li>Price: ${eventos[id].price}</li>
+        </ul>
+    </div>
+`
 }
+
+printDetails(13);
+
+
 // Obtener La parte final de la propiedad image para la imagen
 function getFinalUrlImage(id) {
     let url = eventos[id].image;

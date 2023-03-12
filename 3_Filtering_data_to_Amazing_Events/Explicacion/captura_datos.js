@@ -2,6 +2,8 @@ var form = document.querySelector("form");
 
 form.addEventListener("submit",(evento)=>{formData(evento)})
 
+let dataFromForm;
+
 function formData(evento){
     // Acá prevenimos que se recargue la página
     evento.preventDefault()

@@ -14,6 +14,7 @@ printEvents()
 var form = document.querySelector("form");
 // Cada vez que ocurra un evento change, se autoejecuta 
 form.addEventListener("change", () => { formData() })
+form.addEventListener("click", () => { formData() })
 
 function formData() {
     // Se ejecutará nuestra función para imprimir eventos
@@ -22,6 +23,7 @@ function formData() {
 
 // Imprimo las tarjetas - Lo pongo dentro de una función
 function printEvents() {
+    // Obtengo el checkbox de all
     let all_checked = document.querySelector("#all").checked;
     if (all_checked){
         for (let j = 0; j < eventos.length; j++) {

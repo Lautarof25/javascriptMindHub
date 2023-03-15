@@ -23,15 +23,15 @@ function formData(evento) {
     let checkboxes = document.querySelectorAll("input[type=checkbox]");
     // Creo el array para guardar los chequedado
     let checked = []
-    for (let i = 1; i < checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
             checked.push(checkboxes[i].value)
         }
     }
     // Obtengo el checkbox de all
     let all_checked = document.querySelector("#all");
-    if (checked.length != 0) {
+    if (checked.includes("all") && checked.length > 1 ) {
         all_checked.checked = false;
     }
-    console.log(checked)
+    
 }

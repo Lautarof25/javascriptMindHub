@@ -31,7 +31,11 @@ function formData(evento) {
     // Obtengo el checkbox de all
     let all_checked = document.querySelector("#all");
     if (checked.includes("all") && checked.length > 1 ) {
-        all_checked.checked = false;
+        all_checked.setValue(false);
     }
-    
+    if(checked.includes("all")){
+        for (let i = 1; i < checked.length; i++) {
+            checked[i] = false;
+        }
+    }
 }

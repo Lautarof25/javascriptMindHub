@@ -153,38 +153,15 @@ const intentos = 3;
 if(numeroIngresado > numeroIncognita && intentos > 0){
     console.log("El numero ingresado es mayor, vuelva a intentarlo")
     intentos--;
+    numeroIngresado = prompt("Ingrese un numero del 1 al 10");    
 }else if(numeroIngresado < numeroIncognita && intentos > 0){
     console.log("El numero ingresado es menor, vuelva a intentarlo")
     intentos--;
+    numeroIngresado = prompt("Ingrese un numero del 1 al 10");
 }else if(numeroIngresado == numeroIncognita){
     console.log("Ganaste, haz adivinado el numero")
 }
 
-numeroIngresado = prompt("Ingrese un numero del 1 al 10");
-
-if(numeroIngresado > numeroIncognita && intentos > 0){
-    console.log("El numero ingresado es mayor, vuelva a intentarlo")
-    intentos--;
-}else if(numeroIngresado < numeroIncognita && intentos > 0){
-    console.log("El numero ingresado es menor, vuelva a intentarlo")
-    intentos--;
-}else if(numeroIngresado == numeroIncognita){
-    console.log("Ganaste, haz adivinado el numero")
-}
-
-numeroIngresado = prompt("Ingrese un numero del 1 al 10");
-
-if(numeroIngresado > numeroIncognita && intentos > 0){
-    console.log("El numero ingresado es mayor, vuelva a intentarlo")
-    intentos--;
-}else if(numeroIngresado < numeroIncognita && intentos > 0){
-    console.log("El numero ingresado es menor, vuelva a intentarlo")
-    intentos--;
-}else if(numeroIngresado == numeroIncognita){
-    console.log("Ganaste, haz adivinado el numero")
-}else {
-    console.log("Perdiste")   
-}
 
 /*
 Crear un programa que permita ingresar tu edad y decir si eres un infante (0 a 12 años), adolescente(13 a 18 años), un mayor joven (19 a 45 años) o un anciano (mas de 45 años), y en caso de ingresar una edad mayor a 100 mostrar un mensaje preguntando si en realidad tiene esa edad.
@@ -209,24 +186,129 @@ if(edadOtra >= 0 && edadOtra <= 12){
 Crear un programa que permita el ingreso de “PIEDRA”, “PAPEL” o “TIJERAS” a 2 jugadores y muestre en pantalla cual de los 2 ha ganado o si han empatado. En caso de algún ingreso incorrecto mostrar por pantalla que uno de los jugadores ha hecho trampa.
 */
 
+const jugador1 = prompt("Ingrese PIEDRA PAPEL o TIJERA").toUpperCase();
+const jugador2 = prompt("Ingrese PIEDRA PAPEL o TIJERA").toUpperCase();
+
+if(jugador1 == "PIEDRA" || jugador1 == "PAPEL" || jugador1 == "TIJERA" && 
+jugador2 == "PIEDRA" || jugador2 == "PAPEL" || jugador2 == "TIJERA"
+){
+    if(jugador1 == "TIJERA" && jugador2 == "PAPEL"){
+        console.log(jugador1+" ha ganado");
+    }
+    else if (jugador1 == "PAPEL" && jugador2 == "PIEDRA"){
+        console.log(jugador1+" ha ganado");
+    }
+    else if (jugador1 == "PIEDRA" && jugador2 == "TIJERA"){
+        console.log(jugador1+" ha ganado");
+    }
+    else if (jugador2 == "TIJERA" && jugador1 == "PAPEL"){
+        console.log(jugador2+" ha ganado");
+    }
+    else if (jugador2 == "PIEDRA" && jugador1 == "TIJERA"){
+        console.log(jugador2+" ha ganado");
+    }
+    else if (jugador2 == "PAPEL" && jugador1 == "PIEDRA"){
+        console.log(jugador2+" ha ganado");
+    }else {
+        console.log("han empatado");
+    }
+}else {
+    console.log("Has hecho trampa")
+}
 
 
 /*
 Realizar un programa que permita el ingreso de un color y utilizando “switch” mostrar por pantalla los siguientes mensajes según las opciones: Blanco o Negro: Falta de color, Verde: El color de la naturaleza, Azul: El color del agua, Amarillo: El color del sol, Rojo: El color del fuego, Marrón: el color de la tierra, y para cualquier otro valor: Excelente elección, no lo teníamos pensado.
 */
 
+const color = prompt("Ingrese un color")
 
+let normalizarColor = color.charAt(0).toUpperCase() + color.slice(1);
+
+
+switch (normalizarColor) {
+    case "Blanco":
+    case "Negro":
+        console.log("Falta de color")
+        break;
+    case "Verde":    
+        console.log("El color de la naturaleza")
+        break;
+    case "Azul":    
+        console.log("El color del agua")
+        break;
+    case "Amarillo":    
+        console.log("El color del sol")
+        break;
+    case "Rojo":    
+        console.log("El color del fuego")
+        break;
+    case "Marrón":    
+        console.log("El color de la tierra")
+        break;
+    default:
+        console.log("Excelente elección, no lo teníamos pensado")
+}
 
 /*
 Realizar un programa que permita el ingreso de 2 valores numéricos y una operación. Según sea la operación ingresada (suma, resta, multiplicación, división) el programa deberá mostrar en pantalla un mensaje junto con el resultado. En caso de haber elegido división realizar la operación siempre que sea posible o mostrar un mensaje de ERROR si el divisor ingresado fue 0.
 */
 
+const valor1 = Number(prompt("Ingrese un numero"));
+const operacion = prompt("Ingrese la operación: + - * / ");
+const valor2 = Number(prompt("Ingrese otro numero"));
+let total = 0;
+
+switch (operacion) {
+    case "+":
+        total = valor1 + valor2
+        console.log("El total es : "+total)
+        break;
+    case "-":
+        total = valor1 - valor2
+        console.log("El total es : "+total)
+        break;
+    case "*":
+        total = valor1 * valor2
+        console.log("El total es : "+total)
+        break;
+    case "/":
+        if(valor2 != 0){
+            total = valor1 / valor2
+            console.log("El total es : "+total)
+        }else {
+            console.log("Error")
+        }
+        break;
+    default:
+}
 
 
 /*
 Crear un programa que permita ingresar todos los datos de tu documento nacional de identidad, mostrar por pantalla un mensaje que imprima todos los datos ingresados y 
 pregunte si están correctos los mismos. En caso afirmativo, crear un objeto llamado dni con todos los datos ingresados y mostrarlos por consola con console.table() mas un mensaje de registro exitoso, en caso de que la persona rechace confirmar los datos, mostrar un mensaje que diga: vuelva a intentarlo en 1 mes.
 */
+
+const nombreDato =  prompt("Ingrese su dni")
+const apellidoDato = prompt("Ingrese su dni")
+const domicilioDato = prompt("Ingrese su dni")
+let respuesta;
+
+console.log(nombreDato,apellidoDato,domicilioDato);
+
+respuesta = prompt("Los datos son correcots? S o N").toUpperCase()
+
+if(respuesta == "S"){
+    const dni = {
+        nombre: nombreDato,
+        apellido: apellidoDato,
+        domicilio: domicilioDato
+    }
+    console.table(nombre,appellido,domicilio)
+}else {
+    console.log("Vuelva a intentarlo en 1 mes")
+}
+
 
 /*
 

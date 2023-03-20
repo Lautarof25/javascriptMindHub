@@ -157,6 +157,3 @@ const data={
       }
     ]
   }
-  
-// Agrego esta sentencia para que tome los datos en otro archivo js
-export default data;

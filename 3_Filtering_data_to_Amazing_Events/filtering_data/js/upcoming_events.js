@@ -1,6 +1,3 @@
-// Importo los datos de Amazing events js
-import data from '../js/amazingEvents.js';
-
 // Obtenemos cards de main
 const cards = document.querySelector("main .cards");
 // Obtenemos la fecha

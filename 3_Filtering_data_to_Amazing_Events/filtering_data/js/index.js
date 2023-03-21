@@ -35,7 +35,9 @@ function formData(evento) {
     })
     // Si "all" está tildado y se tilda otro
     if (all_checkbox.checked && arrayChecked.length > 1){
+        // Se desactiva "all"
         all_checkbox.checked = false;
+        // Se quita "all" del array
         arrayChecked.shift();
     }
     console.log(evento);
@@ -51,49 +53,53 @@ function printCards(events) {
     cards.innerHTML = ``;
     // Si el el checkbox "all" está tildado, imprime todas las tarjetas
     if (events.includes("all")) {
-        for (let j = 0; j < eventos.length; j++) {
-            // Imprimo la tarjeta 
-            cards.innerHTML +=
-                `
-                <div class="card">
-                    <div class="img">
-                        <img src="./Images/${getFinalUrlImage(j)}" alt="service">
-                    </div>
-                    <h2>${eventos[j].name}</h2>
-                    <p>${eventos[j].description}
-                    </p>
-                    <div>
-                        <p>Price: ${eventos[j].price}</p>
-                        <a href="./pages/details.html">see more...</a>
-                    </div>
-                </div>
-                `
-        }
+        // creo una variable para actualizar el index de las imagenes
+        var index = -1;
+        eventos.forEach(evento =>{
+              index++;
+              // Imprimo la tarjeta 
+              cards.innerHTML +=
+              `
+              <div class="card">
+                  <div class="img">
+                      <img src="./Images/${getFinalUrlImage(index)}" alt="service">
+                  </div>
+                  <h2>${evento.name}</h2>
+                  <p>${evento.description}
+                  </p>
+                  <div>
+                      <p>Price: ${evento.price}</p>
+                      <a href="./pages/details.html">see more...</a>
+                  </div>
+              </div>
+              `
+        } )
     }// De otra forma, imprime las tarjetas(o no) que sean seleccionadas en el checkbox
     else {
-        for (let j = 0; j < eventos.length; j++) {
-            // Obtengo la categoria del evento actual
-            let category = eventos[j].category;
-            // Si la categoria actual está en el array events
-            if (events.includes(category)) {
+        // creo una variable para actualizar el index de las imagenes
+        var index = -1;
+        eventos.forEach(evento => {
+            index++;
+            // Si el evento actual está en el array de eventos
+            if(events.includes(evento.category)){
                 // Imprimo la tarjeta 
-                cards.innerHTML +=
-                    `
-                <div class="card">
-                    <div class="img">
-                        <img src="./Images/${getFinalUrlImage(j)}" alt="service">
-                    </div>
-                    <h2>${eventos[j].name}</h2>
-                    <p>${eventos[j].description}
-                    </p>
-                    <div>
-                        <p>Price: ${eventos[j].price}</p>
-                        <a href="./pages/details.html">see more...</a>
-                    </div>
-                </div>
-                `
+                  cards.innerHTML +=
+                  `
+              <div class="card">
+                  <div class="img">
+                      <img src="./Images/${getFinalUrlImage(index)}" alt="service">
+                  </div>
+                  <h2>${evento.name}</h2>
+                  <p>${evento.description}
+                  </p>
+                  <div>
+                      <p>Price: ${evento.price}</p>
+                      <a href="./pages/details.html">see more...</a>
+                  </div>
+              </div>
+              `
             }
-        }
+        } )
     }
 }
 

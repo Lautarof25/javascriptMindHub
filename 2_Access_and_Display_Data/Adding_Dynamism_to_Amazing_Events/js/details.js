@@ -1,9 +1,6 @@
-// Importo los datos de Amazing events js
-import data from '../js/amazingEvents.js';
-
 // Obtenemos cards de main
 const card_detail = document.querySelector("main .card_detail");
-// Obtenemos la fecha
+// Obtenemos la fecha base
 const fecha = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;
@@ -27,9 +24,8 @@ function printDetails(id){
     </div>
 `
 }
-
+// Imprimiendo el evento nº 14
 printDetails(13);
-
 
 // Obtener La parte final de la propiedad image para la imagen
 function getFinalUrlImage(id) {

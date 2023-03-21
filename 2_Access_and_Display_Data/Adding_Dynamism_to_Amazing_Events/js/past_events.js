@@ -1,6 +1,6 @@
 // Obtenemos cards de main
 const cards = document.querySelector("main .cards");
-// Obtenemos la fecha
+// Obtenemos la fecha base
 const fecha = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;

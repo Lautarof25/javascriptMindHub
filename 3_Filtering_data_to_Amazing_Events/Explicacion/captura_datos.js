@@ -1,12 +1,15 @@
+// Obtenemos el formulario
 var form = document.querySelector("form");
-
+// Escuchamos el evento submit, y hacemos que se autoejecute
 form.addEventListener("submit",(evento)=>{formData(evento)})
-
+// Asignamos una variable global 
 let dataFromForm;
 
 function formData(evento){
     // Acá prevenimos que se recargue la página
     evento.preventDefault()
+    // Podemos imprimir su atributo target, que devuelve un array con c/u de las entradas de los datos
+    // console.log(evento.target) 
     dataFromForm = {
         // Devolviendo valores del input de tipo text
         firstName: evento.target[0].value,

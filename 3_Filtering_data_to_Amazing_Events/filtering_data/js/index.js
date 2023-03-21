@@ -10,7 +10,7 @@ const form = document.querySelector("form");
 const all_checkbox = document.querySelector("#all");
 
 // Imprimo todos los eventos la primera vez que se entra a la página
-printCards(0)
+// printCards(0) // Ver cómo solucionar esto
 
 // ----------------- EVENTO CHANGE PARA CHECKBOXES -------------------- //
 // Escuchamos el evento change en form con la función formData
@@ -23,26 +23,33 @@ function formData(evento) {
     // Evitamos que la página se recargue
     evento.preventDefault();
     // Creamos un array vacio con los valores positivos de los checkboxes
-    let arrayChecked =[]
+    let arrayChecked = []
     // Obtenemos todos los valores de los checkboxes
     let checkboxes = document.querySelectorAll("input[type=checkbox]");
     // Creamos un for para agregar los eventos tildados al array vacio
-    for(let i = 0; i <checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         // Si el checkbox actual está tildado
         if (checkboxes[i].checked) {
             // Lo agregamos al array
             arrayChecked.push(checkboxes[i].id)
-            }
         }
-    console.log(arrayChecked)
+    }
+    printCards(arrayChecked)
 }
 
 function printCards(events) {
-    // Propósito: Imprimir las tarjetas de eventos
+    // Propósito: Imprimir las tarjetas de eventos según los eventos **events** pasados
     // Parámetros: events - Array de eventos a imprimir
     // Precondiciones: Ninguna
+
+    // Imprimo una tarjeta vacía para evitar que se repitan los eventos en cada actualización de evento
+    cards.innerHTML = ``;
     for (let j = 0; j < eventos.length; j++) {
-        cards.innerHTML +=
+        // Obtengo la categoria del evento actual
+        let category = data.eventos[j].category;
+        // Si la categoria actual está en el array events
+        if(events.includes(category)){
+            cards.innerHTML +=
             `
             <div class="card">
                 <div class="img">
@@ -57,6 +64,7 @@ function printCards(events) {
                 </div>
             </div>
             `
+        }
     }
 }
 

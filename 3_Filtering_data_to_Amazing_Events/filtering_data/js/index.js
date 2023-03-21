@@ -27,18 +27,18 @@ function formData(evento) {
     let arrayChecked = []
     // Obtenemos todos los valores de los checkboxes
     let checkboxes = document.querySelectorAll("input[type=checkbox]");
-    // Creamos un for para agregar los eventos tildados al array vacio
-    for (let i = 0; i < checkboxes.length; i++) {
-        // Si el checkbox actual está tildado
-        if (checkboxes[i].checked) {
-            // Lo agregamos al array
-            arrayChecked.push(checkboxes[i].id)
+    // Creamos un forEach para agregar los eventos tildados al array vacio
+    checkboxes.forEach(checkbox =>{
+        if(checkbox.checked){
+            arrayChecked.push(checkbox.id)
         }
-    }
-    // Si "all" está activo
+    })
+    // Si "all" está tildado y se tilda otro
     if (all_checkbox.checked && arrayChecked.length > 1){
         all_checkbox.checked = false;
+        arrayChecked.shift();
     }
+    console.log(evento);
     printCards(arrayChecked)
 }
 
@@ -50,10 +50,10 @@ function printCards(events) {
     // Imprimo una tarjeta vacía para evitar que se repitan los eventos en cada actualización de evento
     cards.innerHTML = ``;
     // Si el el checkbox "all" está tildado, imprime todas las tarjetas
-    if (events[0] == "all"){
+    if (events.includes("all")) {
         for (let j = 0; j < eventos.length; j++) {
-                // Imprimo la tarjeta 
-                cards.innerHTML +=
+            // Imprimo la tarjeta 
+            cards.innerHTML +=
                 `
                 <div class="card">
                     <div class="img">
@@ -75,10 +75,10 @@ function printCards(events) {
             // Obtengo la categoria del evento actual
             let category = eventos[j].category;
             // Si la categoria actual está en el array events
-            if(events.includes(category)){
+            if (events.includes(category)) {
                 // Imprimo la tarjeta 
                 cards.innerHTML +=
-                `
+                    `
                 <div class="card">
                     <div class="img">
                         <img src="./Images/${getFinalUrlImage(j)}" alt="service">

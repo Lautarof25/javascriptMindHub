@@ -1,5 +1,7 @@
-// Obtenemos cards de main
+// Obtenemos el contenedor cards de main
 const cards = document.querySelector("main .cards");
+// Obtenemos todas las tarjetas del contenedor cards
+const card_items = document.getElementsByClassName("card");
 // Obtenemos la fecha base
 const fecha = data.fechaActual;
 // Obtenemos los eventos
@@ -10,6 +12,12 @@ const form = document.querySelector("form");
 const all_checkbox = document.querySelector("#all");
 // Creo un array temporal para simular que "all" está chequeado
 const first_time = ["all"];
+// Obtenemos el input search
+const inputSearch = document.querySelector("input[type=search]");
+// Obtenemos el boton 
+const boton = document.querySelector("button[type=button]")
+// Creo una constante para guardar el evento
+let dataInput;
 // Imprimo todas las tarjetas la primer vez que carga la página
 printCards(first_time);
 
@@ -17,10 +25,9 @@ printCards(first_time);
 // Escuchamos el evento change en form con la función formData
 form.addEventListener("change", (evento) => { formData(evento) })
 
-
 // Creamos la función formData para escuchar los eventos
 function formData(evento) {
-    // Propósito: escuchar el evento actual e imprimir las tarjetas o no
+    // Propósito: Escuchar el **evento** actual e imprimir o no las tarjetas de eventos
     // Evitamos que la página se recargue
     evento.preventDefault();
     // Creamos un array vacio con los valores positivos de los checkboxes
@@ -40,9 +47,27 @@ function formData(evento) {
         // Se quita "all" del array
         arrayChecked.shift();
     }
-    console.log(evento);
     printCards(arrayChecked)
+    // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
+    // guardamos el texto del input search
+    dataInput = evento.target.value;
+    // Convierto el texto todo a minúscula
+
+    // Si el input search no está vacio
+    if (dataInput != ""){
+        // Recorro las tarjetas
+        for (var i = 0;i < card_items.length;i++){
+                // Creo variables temporales para la ruta de name y description
+                // var valueDescription = childNodes[5].childNodes[0].nodeValue;
+                // Si el name o description tiene el texto guardado
+                if(card_items[i].childNodes[3].childNodes[0].nodeValue.includes(dataInput) ||
+                    card_items[i].childNodes[5].childNodes[0].nodeValue.includes(dataInput)){
+                    
+                }
+        }
+    }
 }
+
 
 function printCards(events) {
     // Propósito: Imprimir las tarjetas de eventos según los eventos **events** pasados
@@ -64,8 +89,8 @@ function printCards(events) {
                   <div class="img">
                       <img src="./Images/${getFinalUrlImage(index)}" alt="service">
                   </div>
-                  <h2>${evento.name}</h2>
-                  <p>${evento.description}
+                  <h2 class="name">${evento.name}</h2>
+                  <p class="description">${evento.description}
                   </p>
                   <div>
                       <p>Price: ${evento.price}</p>
@@ -87,10 +112,10 @@ function printCards(events) {
                   `
               <div class="card">
                   <div class="img">
-                      <img src="./Images/${getFinalUrlImage(index)}" alt="service">
+                      <img src="./Images/${getFinalUrlImage(index)}" alt="${evento.name}">
                   </div>
-                  <h2>${evento.name}</h2>
-                  <p>${evento.description}
+                  <h2 class="name">${evento.name}</h2>
+                  <p class="description">${evento.description}
                   </p>
                   <div>
                       <p>Price: ${evento.price}</p>
@@ -102,7 +127,6 @@ function printCards(events) {
         } )
     }
 }
-
 
 // Obtener La parte final de la propiedad image para la imagen
 function getFinalUrlImage(id) {

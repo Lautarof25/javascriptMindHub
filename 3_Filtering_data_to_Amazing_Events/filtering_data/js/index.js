@@ -47,23 +47,28 @@ function formData(evento) {
         // Se quita "all" del array
         arrayChecked.shift();
     }
+    console.log(arrayChecked)
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
     dataInput = evento.target.value;
     // Convierto el texto todo a minúscula
-
+    var lowerInput = dataInput.toLowerCase();
     // Si el input search no está vacio
     if (dataInput != ""){
         // Recorro las tarjetas
+        // Creo un array de nuevos eventos con sus categorias
+        var arrayNewChecked = [];
         for (var i = 0;i < card_items.length;i++){
-                // Creo variables temporales para la ruta de name y description
-                // var valueDescription = childNodes[5].childNodes[0].nodeValue;
-                // Si el name o description tiene el texto guardado
-                if(card_items[i].childNodes[3].childNodes[0].nodeValue.includes(dataInput) ||
-                    card_items[i].childNodes[5].childNodes[0].nodeValue.includes(dataInput)){
-                    
-                }
+            // Creo variables temporales para la ruta de name y description
+            var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
+            var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
+            var categoryEvent = card_items[i].childNodes[0].parentNode.classList.value;
+            // Si el name o description tiene el texto guardado
+            if(nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)){
+                arrayNewChecked.push(categoryEvent)
+                console.log(arrayNewChecked)
+            }
         }
     }
 }
@@ -85,7 +90,7 @@ function printCards(events) {
               // Imprimo la tarjeta 
               cards.innerHTML +=
               `
-              <div class="card">
+              <div class="card ${evento.category}">
                   <div class="img">
                       <img src="./Images/${getFinalUrlImage(index)}" alt="service">
                   </div>

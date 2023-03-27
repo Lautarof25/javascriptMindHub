@@ -54,22 +54,23 @@ function formData(evento) {
     dataInput = evento.target.value;
     // Convierto el texto todo a minúscula
     var lowerInput = dataInput.toLowerCase();
+    // Creo un array de nuevos eventos con sus categorias
+    var arrayNewChecked = [];
     // Si el input search no está vacio
     if (dataInput != ""){
         // Recorro las tarjetas
-        // Creo un array de nuevos eventos con sus categorias
-        var arrayNewChecked = [];
         for (var i = 0;i < card_items.length;i++){
-            // Creo variables temporales para la ruta de name y description
+            // Creo variables temporales para la ruta de name, description y category
             var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
             var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
-            var categoryEvent = card_items[i].childNodes[0].parentNode.classList.value;
+            var categoryEvent = card_items[i].childNodes[8].nextSibling.className;
             // Si el name o description tiene el texto guardado
             if(nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)){
                 arrayNewChecked.push(categoryEvent)
-                console.log(arrayNewChecked)
             }
         }
+        // Problema! Trae otro evento que tiene la misma categoria, hay que hacer un condicional por nombre y otro description
+        printCards(arrayNewChecked)
     }
 }
 
@@ -90,7 +91,7 @@ function printCards(events) {
               // Imprimo la tarjeta 
               cards.innerHTML +=
               `
-              <div class="card ${evento.category}">
+              <div class="card">
                   <div class="img">
                       <img src="./Images/${getFinalUrlImage(index)}" alt="service">
                   </div>
@@ -101,6 +102,7 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
+                  <p class="${evento.category}"></p>
               </div>
               `
         } )

@@ -51,7 +51,7 @@ function formData(evento) {
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
-    dataInput = evento.target.value;
+    dataInput = inputSearch.value;
     // Convierto el texto todo a minúscula
     var lowerInput = dataInput.toLowerCase();
     // Creo un array de nuevos eventos con sus categorias
@@ -128,6 +128,7 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
+                  <p class="${evento.category}"></p>
               </div>
               `
             }

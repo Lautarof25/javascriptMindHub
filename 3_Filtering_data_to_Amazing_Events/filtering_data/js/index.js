@@ -47,7 +47,6 @@ function formData(evento) {
         // Se quita "all" del array
         arrayChecked.shift();
     }
-    console.log(arrayChecked)
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
@@ -106,8 +105,10 @@ function printCards(events) {
               </div>
               `
         } )
+    }else if(events.length == 0){
+        cards.innerHTML = `<div> No se encontró ningún resultado </div>`;
     }// De otra forma, imprime las tarjetas(o no) que sean seleccionadas en el checkbox
-    else {
+    else{
         // creo una variable para actualizar el index de las imagenes
         var index = -1;
         eventos.forEach(evento => {

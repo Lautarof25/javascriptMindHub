@@ -101,11 +101,12 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
-                  <p class="${evento.category}"></p>
+                  <p class="${evento.id}"></p>
               </div>
               `
         } )
-    }else if(events.length == 0){
+    }// Si no hay ninguna tarjeta, que se imprima una leyenda al respecto
+    else if(events.length == 0){
         cards.innerHTML = `<div> No se encontró ningún resultado </div>`;
     }// De otra forma, imprime las tarjetas(o no) que sean seleccionadas en el checkbox
     else{
@@ -129,7 +130,7 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
-                  <p class="${evento.category}"></p>
+                  <p class="${evento.id}"></p>
               </div>
               `
             }

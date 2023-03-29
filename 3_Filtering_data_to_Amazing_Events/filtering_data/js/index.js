@@ -62,10 +62,12 @@ function formData(evento) {
             // Creo variables temporales para la ruta de name, description y category
             var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
             var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
-            var categoryEvent = card_items[i].childNodes[8].nextSibling.className;
+            var idEvent = card_items[i].childNodes[8].nextSibling.className;
+            var categoryEvent = card_items[i].childNodes[10].nextSibling.className;
             // Si el name o description tiene el texto guardado
             if(nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)){
-                arrayNewChecked.push(categoryEvent)
+                // arrayNewChecked.push(categoryEvent) 
+                // Necesito traer los eventos en base a su id
             }
         }
         // Problema! Trae otro evento que tiene la misma categoria, hay que hacer un condicional por nombre y otro description
@@ -101,7 +103,8 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
-                  <p class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.category}"></p>
               </div>
               `
         } )
@@ -130,7 +133,8 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html">see more...</a>
                   </div>
-                  <p class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.category}"></p>
               </div>
               `
             }

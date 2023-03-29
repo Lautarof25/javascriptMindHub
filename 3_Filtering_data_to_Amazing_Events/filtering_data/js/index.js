@@ -18,6 +18,8 @@ const inputSearch = document.querySelector("input[type=search]");
 const boton = document.querySelector("button[type=button]")
 // Creo una constante para guardar el evento
 let dataInput;
+// Creo un array de id con las tarjetas
+var arrayIds = [];
 // Imprimo todas las tarjetas la primer vez que carga la página
 printCards(first_time);
 
@@ -50,28 +52,54 @@ function formData(evento) {
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
-    dataInput = inputSearch.value;
+    dataInput = inputSearch.value.toLowerCase();
     // Convierto el texto todo a minúscula
-    var lowerInput = dataInput.toLowerCase();
+    // var lowerInput = dataInput.toLowerCase();
     // Creo un array de nuevos eventos con sus categorias
     var arrayNewChecked = [];
-    // Creo un array de id con las tarjetas
-    var arrayIds = [];
     // Si el input search no está vacio
     if (dataInput != "") {
-        // Recorro las tarjetas
-        for (var i = 0; i < card_items.length; i++) {
-            // Creo variables temporales para la ruta de name, description,id y category
-            var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
-            var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
-            var idEvent = card_items[i].childNodes[8].nextSibling.className;
-            // Si el name o description tiene el texto guardado
-            if (nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)) {
-                // Guardo el id en un arrayIds
-                arrayIds.push(idEvent)
-            }
-        }
+        // Recorro las tarjetas en busca del id
+        searchIdByNameAndDescription(card_items)
         // Imprimo las tarjetas en base a su texto
+        var newCardsByID = saveCardsById(card_items);
+        console.log(newCardsByID)
+        cards.innerHTML = ""
+        if (arrayIds.length != 0){
+            cards.innerHTML = newCardsByID
+        }else {
+            cards.innerHTML = "No se encontró ningún resultado"
+        }
+    }
+
+}
+
+// Función para Buscar el ID en card_items en las tarjetas impresas en el HTML
+function searchIdByNameAndDescription(card_items) {
+    // Propósito: Buscar el id de la tarjeta impresa en el HTML
+    // Parámetros: card_items - String - El documento html de las tarjetas
+    // Recorro las tarjetas en busca del id
+    for (var i = 0; i < card_items.length; i++) {
+        // Creo variables temporales para la ruta de name, description,id y category
+        var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
+        var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
+        var idEvent = card_items[i].childNodes[8].nextSibling.className;
+        // Si el name o description tiene el texto guardado
+        if (nameEventLower.includes(dataInput) || descriptionEventLower.includes(dataInput)) {
+            // Guardo el id en un arrayIds
+            arrayIds.push(idEvent)
+        }
+    }
+}
+
+// Función para imprimir las cards en base a card_items (las tarjetas ya impresas en el HTML)
+function saveCardsById(card_items){
+    // Propósito: Imprime las tarjetas de acuerdo al id
+    // Parámetros: card_items - String - El HTML de las tarjetas impresas
+    // Tipo: String
+    // Crear una variable para alojar la impresión, así podes resetear el HTML sin que se borre lo impreso 
+    var htmlNewCards = "";
+    if (arrayIds.length != 0){
         for (var i = 0; i < card_items.length; i++) {
             // Creo una variable por cada nodo
             var imgNode = card_items[i].childNodes[1].childNodes[1].src
@@ -81,8 +109,7 @@ function formData(evento) {
             // Falta ID y categoria
             // Falta reseatear el HTML y que encuentre más alternativas
             if (arrayIds.includes(card_items[i].childNodes[8].nextSibling.className)) {
-                cards.innerHTML +=
-                    `
+                htmlNewCards +=`
              <div class="card">
                  <div class="img">
                      <img src="${(imgNode)}" alt="service">
@@ -100,8 +127,8 @@ function formData(evento) {
              `
             }
         }
+        return htmlNewCards
     }
-
 }
 
 function printCards(events) {

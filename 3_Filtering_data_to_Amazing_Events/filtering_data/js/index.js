@@ -52,14 +52,19 @@ function formData(evento) {
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
+    /* PROBLEMA REPITIENDO TARJETAS ANTERIORES CON EL FILTRO DE TODAS*/ 
+    /* El patrón es: filtro correcto, pero toma las anteriores según su id
+        Si traigo id correspondiente a 3, trae también tarjetas con id 1,2
+    */ 
     dataInput = inputSearch.value.toLowerCase();
     // Si el input search no está vacio
     if (dataInput != "") {
+        // Reinicio el Array de ids
+        arrayIds = []
         // Recorro las tarjetas en busca del id
         searchIdByNameAndDescription(card_items)
         // Imprimo las tarjetas en base a su texto
         var newCardsByID = saveCardsById(card_items);
-        console.log(newCardsByID)
         cards.innerHTML = ""
         if (arrayIds.length != 0){
             cards.innerHTML = newCardsByID

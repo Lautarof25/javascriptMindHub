@@ -53,10 +53,6 @@ function formData(evento) {
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
     dataInput = inputSearch.value.toLowerCase();
-    // Convierto el texto todo a minúscula
-    // var lowerInput = dataInput.toLowerCase();
-    // Creo un array de nuevos eventos con sus categorias
-    var arrayNewChecked = [];
     // Si el input search no está vacio
     if (dataInput != "") {
         // Recorro las tarjetas en busca del id

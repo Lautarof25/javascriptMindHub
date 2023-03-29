@@ -35,13 +35,13 @@ function formData(evento) {
     // Obtenemos todos los valores de los checkboxes
     let checkboxes = document.querySelectorAll("input[type=checkbox]");
     // Creamos un forEach para agregar los eventos tildados al array vacio
-    checkboxes.forEach(checkbox =>{
-        if(checkbox.checked){
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
             arrayChecked.push(checkbox.id)
         }
     })
     // Si "all" está tildado y se tilda otro
-    if (all_checkbox.checked && arrayChecked.length > 1){
+    if (all_checkbox.checked && arrayChecked.length > 1) {
         // Se desactiva "all"
         all_checkbox.checked = false;
         // Se quita "all" del array
@@ -55,26 +55,54 @@ function formData(evento) {
     var lowerInput = dataInput.toLowerCase();
     // Creo un array de nuevos eventos con sus categorias
     var arrayNewChecked = [];
+    // Creo un array de id con las tarjetas
+    var arrayIds = [];
     // Si el input search no está vacio
-    if (dataInput != ""){
+    if (dataInput != "") {
         // Recorro las tarjetas
-        for (var i = 0;i < card_items.length;i++){
-            // Creo variables temporales para la ruta de name, description y category
+        for (var i = 0; i < card_items.length; i++) {
+            // Creo variables temporales para la ruta de name, description,id y category
             var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
             var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
             var idEvent = card_items[i].childNodes[8].nextSibling.className;
-            var categoryEvent = card_items[i].childNodes[10].nextSibling.className;
             // Si el name o description tiene el texto guardado
-            if(nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)){
-                // arrayNewChecked.push(categoryEvent) 
-                // Necesito traer los eventos en base a su id
+            if (nameEventLower.includes(lowerInput) || descriptionEventLower.includes(lowerInput)) {
+                // Guardo el id en un arrayIds
+                arrayIds.push(idEvent)
             }
         }
-        // Problema! Trae otro evento que tiene la misma categoria, hay que hacer un condicional por nombre y otro description
-        printCards(arrayNewChecked)
+        // Imprimo las tarjetas en base a su texto
+        for (var i = 0; i < card_items.length; i++) {
+            // Creo una variable por cada nodo
+            var imgNode = card_items[i].childNodes[1].childNodes[1].src
+            var titleNode = card_items[i].childNodes[3].childNodes[0].nodeValue
+            var descriptionNode = card_items[i].childNodes[5].childNodes[0].nodeValue
+            var priceNode = card_items[i].childNodes[7].childNodes[1].innerHTML
+            // Falta ID y categoria
+            // Falta reseatear el HTML y que encuentre más alternativas
+            if (arrayIds.includes(card_items[i].childNodes[8].nextSibling.className)) {
+                cards.innerHTML +=
+                    `
+             <div class="card">
+                 <div class="img">
+                     <img src="${(imgNode)}" alt="service">
+                 </div>
+                 <h2 class="name">${titleNode}</h2>
+                 <p class="description">${descriptionNode}
+                 </p>
+                 <div>
+                     <p>${priceNode}</p>
+                     <a href="./pages/details.html">see more...</a>
+                 </div>
+                 <p style="display:none;" class="${cards.id}"></p>
+                 <p style="display:none;" class="${cards.category}"></p>
+             </div>
+             `
+            }
+        }
     }
-}
 
+}
 
 function printCards(events) {
     // Propósito: Imprimir las tarjetas de eventos según los eventos **events** pasados
@@ -87,14 +115,14 @@ function printCards(events) {
     if (events.includes("all")) {
         // creo una variable para actualizar el index de las imagenes
         var index = -1;
-        eventos.forEach(evento =>{
-              index++;
-              // Imprimo la tarjeta 
-              cards.innerHTML +=
-              `
+        eventos.forEach(evento => {
+            index++;
+            // Imprimo la tarjeta 
+            cards.innerHTML +=
+                `
               <div class="card">
                   <div class="img">
-                      <img src="./Images/${getFinalUrlImage(index)}" alt="service">
+                      <img src="./Images/${getFinalUrlImage(index)}" alt="${evento.name}">
                   </div>
                   <h2 class="name">${evento.name}</h2>
                   <p class="description">${evento.description}
@@ -107,21 +135,21 @@ function printCards(events) {
                   <p style="display:none;" class="${evento.category}"></p>
               </div>
               `
-        } )
+        })
     }// Si no hay ninguna tarjeta, que se imprima una leyenda al respecto
-    else if(events.length == 0){
+    else if (events.length == 0) {
         cards.innerHTML = `<div> No se encontró ningún resultado </div>`;
     }// De otra forma, imprime las tarjetas(o no) que sean seleccionadas en el checkbox
-    else{
+    else {
         // creo una variable para actualizar el index de las imagenes
         var index = -1;
         eventos.forEach(evento => {
             index++;
             // Si el evento actual está en el array de eventos
-            if(events.includes(evento.category)){
+            if (events.includes(evento.category)) {
                 // Imprimo la tarjeta 
-                  cards.innerHTML +=
-                  `
+                cards.innerHTML +=
+                    `
               <div class="card">
                   <div class="img">
                       <img src="./Images/${getFinalUrlImage(index)}" alt="${evento.name}">
@@ -138,7 +166,7 @@ function printCards(events) {
               </div>
               `
             }
-        } )
+        })
     }
 }
 

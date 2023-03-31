@@ -120,7 +120,7 @@ function saveCardsById(card_items){
                  </p>
                  <div>
                      <p>${priceNode}</p>
-                     <a href="./pages/details.html">see more...</a>
+                     <a href="./pages/details.html?id=${cards.id}">see more...</a>
                  </div>
                  <p style="display:none;" class="${cards.id}"></p>
                  <p style="display:none;" class="${cards.category}"></p>
@@ -157,7 +157,7 @@ function printCards(events) {
                   </p>
                   <div>
                       <p>Price: ${evento.price}</p>
-                      <a href="./pages/details.html">see more...</a>
+                      <a href="./pages/details.html?id=${evento.id}">see more...</a>
                   </div>
                   <p style="display:none;" class="${evento.id}"></p>
                   <p style="display:none;" class="${evento.category}"></p>
@@ -187,7 +187,7 @@ function printCards(events) {
                   </p>
                   <div>
                       <p>Price: ${evento.price}</p>
-                      <a href="./pages/details.html">see more...</a>
+                      <a href="./pages/details.html?id=${evento.id}">see more...</a>
                   </div>
                   <p style="display:none;" class="${evento.id}"></p>
                   <p style="display:none;" class="${evento.category}"></p>

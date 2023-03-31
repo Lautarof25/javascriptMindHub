@@ -1,15 +1,15 @@
-// Importo los datos de Amazing events js
-import data from '../js/amazingEvents.js';
-
 // Obtenemos cards de main
 const card_detail = document.querySelector("main .card_detail");
 // Obtenemos la fecha
 const fecha = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;
+// Obtengo el "id" de la url de detalle
+var idEventos = location.search.split("?id=").filter(Number)-1
 
 // Imprimo el detalle
 function printDetails(id){
+    // Propósito: Imprimir la tarjeta de detalle en base a su id
     card_detail.innerHTML += `
     <img class="img_detail" src="../Images/${getFinalUrlImage(id)}" alt="product">
     <div>
@@ -28,7 +28,7 @@ function printDetails(id){
 `
 }
 
-printDetails(13);
+printDetails(idEventos);
 
 
 // Obtener La parte final de la propiedad image para la imagen

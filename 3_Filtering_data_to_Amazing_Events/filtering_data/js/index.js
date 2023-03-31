@@ -7,7 +7,7 @@ const fecha = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;
 // Obtenemos el formulario que contiene los checkboxes y el input search
-const form = document.querySelector("form");
+const form = document.querySelector("#form");
 // Obtenemos el primer checkbox "all"
 const all_checkbox = document.querySelector("#all");
 // Creo un array temporal para simular que "all" está chequeado

@@ -15,23 +15,23 @@ fieldset {
     border: none;
 }
 
-form fieldset:first-child {
+#form fieldset:first-child {
     display: flex;
     flex-wrap: wrap;
     grid-gap: 1rem;
     width: 60%;
 }
 
-form fieldset:last-child {
+#form fieldset:last-child {
     margin-left: auto;
     width: 40%;
 }
 
-form fieldset:last-child input {
+#form fieldset:last-child input {
     width: 80%;
 }
 
-form button {
+#form button {
     background-color: var(--first-color);
     color: white;
 }

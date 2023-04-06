@@ -141,10 +141,9 @@ function printCards(events) {
     cards.innerHTML = ``;
     // Si el el checkbox "all" está tildado, imprime todas las tarjetas
     if (events.includes("all")) {
-        // creo una variable para actualizar el index de las imagenes
-        var index = -1;
         eventos.forEach(evento => {
-            index++;
+            // creo una variable para actualizar el index de las imagenes
+            var index = evento.id - 1;
             // Imprimo la tarjeta 
             cards.innerHTML +=
                 `
@@ -169,10 +168,9 @@ function printCards(events) {
         cards.innerHTML = `<div> No se encontró ningún resultado </div>`;
     }// De otra forma, imprime las tarjetas(o no) que sean seleccionadas en el checkbox
     else {
-        // creo una variable para actualizar el index de las imagenes
-        var index = -1;
         eventos.forEach(evento => {
-            index++;
+            // creo una variable para actualizar el index de las imagenes
+            var index = evento.id - 1;
             // Si el evento actual está en el array de eventos
             if (events.includes(evento.category)) {
                 // Imprimo la tarjeta 

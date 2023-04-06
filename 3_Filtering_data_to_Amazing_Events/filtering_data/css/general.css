@@ -226,3 +226,8 @@ footer i:hover {
         flex-direction: column;
     }
 }
+@media (max-width: 576px) { 
+    .slider h1 {
+        font-size: 1.5rem;
+    }
+ }

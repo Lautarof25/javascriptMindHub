@@ -77,7 +77,7 @@ function formData(evento) {
 
 // Función para Buscar el ID en card_items en las tarjetas impresas en el HTML
 function searchIdByNameAndDescription(card_items) {
-    // Propósito: Buscar el id de la tarjeta impresa en el HTML
+    // Propósito: Buscar el id de la tarjeta impresa en el HTML y guardarla en el array
     // Parámetros: card_items - String - El documento html de las tarjetas
     // Recorro las tarjetas en busca del id
     for (var i = 0; i < card_items.length; i++) {
@@ -98,7 +98,8 @@ function saveCardsById(card_items) {
     // Propósito: Imprime las tarjetas de acuerdo al id
     // Parámetros: card_items - String - El HTML de las tarjetas impresas
     // Tipo: String
-    // Crear una variable para alojar la impresión, así podes resetear el HTML sin que se borre lo impreso 
+
+    // Creo una variable para alojar la impresión, así podes resetear el HTML sin que se borre lo impreso 
     var htmlNewCards = "";
     if (arrayIds.length != 0) {
         for (var i = 0; i < card_items.length; i++) {
@@ -107,8 +108,7 @@ function saveCardsById(card_items) {
             var titleNode = card_items[i].childNodes[3].childNodes[0].nodeValue
             var descriptionNode = card_items[i].childNodes[5].childNodes[0].nodeValue
             var priceNode = card_items[i].childNodes[7].childNodes[1].innerHTML
-            // Falta ID y categoria
-            // Falta reseatear el HTML y que encuentre más alternativas
+            // Si el arrayIDs contiene el id buscado, guardo un nuevo html
             if (arrayIds.includes(card_items[i].childNodes[8].nextSibling.className)) {
                 htmlNewCards += `
              <div class="card">

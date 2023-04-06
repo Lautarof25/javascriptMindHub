@@ -1,10 +1,10 @@
-.container_1 {
+.container_main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.container_1 form {
+.container_main #form {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem 1rem;
@@ -95,3 +95,14 @@ fieldset {
 .card a:hover {
     background-color: var(--second-color);
 }
+
+/* Media query */
+@media (max-width: 576px) { 
+    .container_main #form{
+        flex-direction: column;
+    }
+    #form fieldset:first-child,
+    #form fieldset:last-child {
+        width: 90%;
+    }
+ }

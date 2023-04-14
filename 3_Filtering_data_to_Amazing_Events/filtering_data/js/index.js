@@ -3,7 +3,7 @@ const cards = document.querySelector("main .cards");
 // Obtenemos todas las tarjetas del contenedor cards
 const card_items = document.getElementsByClassName("card");
 // Obtenemos la fecha base
-const fecha = data.fechaActual;
+const fechaBase = data.fechaActual;
 // Obtenemos los eventos
 const eventos = data.eventos;
 // Obtenemos el formulario que contiene los checkboxes y el input search
@@ -19,9 +19,20 @@ const boton = document.querySelector("button[type=button]")
 // Creo una constante para guardar el evento
 let dataInput;
 // Creo un array de id con las tarjetas
-var arrayIds = [];
+let arrayIds = [];
 // Imprimo todas las tarjetas la primer vez que carga la página
 printCards(first_time);
+// Separa los eventos pasados y futuros
+let eventosPasados = [];
+let eventosFuturos = [];
+
+eventos.forEach(evento => {
+    evento.date > fechaBase
+        ? eventosFuturos.push(evento)
+        : eventosPasados.push(evento);
+})
+console.log(eventosPasados)
+console.log(eventosFuturos)
 
 // ----------------- EVENTO CHANGE PARA CHECKBOXES -------------------- //
 // Escuchamos el evento change en form con la función formData
@@ -52,10 +63,10 @@ function formData(evento) {
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
-    /* PROBLEMA REPITIENDO TARJETAS ANTERIORES CON EL FILTRO DE TODAS*/ 
+    /* PROBLEMA REPITIENDO TARJETAS ANTERIORES CON EL FILTRO DE TODAS*/
     /* El patrón es: filtro correcto, pero toma las anteriores según su id
         Si traigo id correspondiente a 3, trae también tarjetas con id 1,2
-    */ 
+    */
     dataInput = inputSearch.value.toLowerCase();
     // Si el input search no está vacio
     if (dataInput != "") {
@@ -64,11 +75,11 @@ function formData(evento) {
         // Recorro las tarjetas en busca del id
         searchIdByNameAndDescription(card_items)
         // Imprimo las tarjetas en base a su texto
-        var newCardsByID = saveCardsById(card_items);
+        let newCardsByID = saveCardsById(card_items);
         cards.innerHTML = ""
-        if (arrayIds.length != 0){
+        if (arrayIds.length != 0) {
             cards.innerHTML = newCardsByID
-        }else {
+        } else {
             cards.innerHTML = "No se encontró ningún resultado"
         }
     }
@@ -82,9 +93,9 @@ function searchIdByNameAndDescription(card_items) {
     // Recorro las tarjetas en busca del id
     for (var i = 0; i < card_items.length; i++) {
         // Creo variables temporales para la ruta de name, description,id y category
-        var nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
-        var descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
-        var idEvent = card_items[i].childNodes[8].nextSibling.className;
+        let nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
+        let descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
+        let idEvent = card_items[i].childNodes[8].nextSibling.className;
         // Si el name o description tiene el texto guardado
         if (nameEventLower.includes(dataInput) || descriptionEventLower.includes(dataInput)) {
             // Guardo el id en un arrayIds
@@ -94,23 +105,23 @@ function searchIdByNameAndDescription(card_items) {
 }
 
 // Función para imprimir las cards en base a card_items (las tarjetas ya impresas en el HTML)
-function saveCardsById(card_items){
+function saveCardsById(card_items) {
     // Propósito: Imprime las tarjetas de acuerdo al id
     // Parámetros: card_items - String - El HTML de las tarjetas impresas
     // Tipo: String
     // Crear una variable para alojar la impresión, así podes resetear el HTML sin que se borre lo impreso 
-    var htmlNewCards = "";
-    if (arrayIds.length != 0){
+    let htmlNewCards = "";
+    if (arrayIds.length != 0) {
         for (var i = 0; i < card_items.length; i++) {
             // Creo una variable por cada nodo
-            var imgNode = card_items[i].childNodes[1].childNodes[1].src
-            var titleNode = card_items[i].childNodes[3].childNodes[0].nodeValue
-            var descriptionNode = card_items[i].childNodes[5].childNodes[0].nodeValue
-            var priceNode = card_items[i].childNodes[7].childNodes[1].innerHTML
+            let imgNode = card_items[i].childNodes[1].childNodes[1].src
+            let titleNode = card_items[i].childNodes[3].childNodes[0].nodeValue
+            let descriptionNode = card_items[i].childNodes[5].childNodes[0].nodeValue
+            let priceNode = card_items[i].childNodes[7].childNodes[1].innerHTML
             // Falta ID y categoria
             // Falta reseatear el HTML y que encuentre más alternativas
             if (arrayIds.includes(card_items[i].childNodes[8].nextSibling.className)) {
-                htmlNewCards +=`
+                htmlNewCards += `
              <div class="card">
                  <div class="img">
                      <img src="${(imgNode)}" alt="service">
@@ -143,7 +154,7 @@ function printCards(events) {
     if (events.includes("all")) {
         eventos.forEach(evento => {
             // creo una variable para actualizar el index de las imagenes
-            var index = evento.id - 1;
+            let index = evento.id - 1;
             // Imprimo la tarjeta 
             cards.innerHTML +=
                 `
@@ -170,7 +181,7 @@ function printCards(events) {
     else {
         eventos.forEach(evento => {
             // creo una variable para actualizar el index de las imagenes
-            var index = evento.id - 1;
+            let index = evento.id - 1;
             // Si el evento actual está en el array de eventos
             if (events.includes(evento.category)) {
                 // Imprimo la tarjeta 
@@ -210,7 +221,7 @@ function getFinalUrlImage(id) {
     return reverseUrlImagen(urlFinal);
 }
 
-// Reverter la parte final de url de la imagen
+// Revertir la parte final de url de la imagen
 function reverseUrlImagen(url) {
     // Reverse string
     let urlFinalReverse = "";

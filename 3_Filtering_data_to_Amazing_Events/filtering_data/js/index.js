@@ -25,17 +25,19 @@ printCards(first_time);
 // Separa los eventos pasados y futuros
 let eventosPasados = [];
 let eventosFuturos = [];
-
+// Recorro los eventos
 eventos.forEach(evento => {
+    // Recorra cada fecha de los eventos
+    // Si es mayor a la fecha base
     evento.date > fechaBase
+        // Agregarlos a eventos futuros
         ? eventosFuturos.push(evento)
+        // Sino, agregarlos a eventos pasados
         : eventosPasados.push(evento);
 })
-console.log(eventosPasados)
-console.log(eventosFuturos)
 
 // ----------------- EVENTO CHANGE PARA CHECKBOXES -------------------- //
-// Escuchamos el evento change en form con la función formData
+// Escuchamos el evento change en div con id form con la función formData
 form.addEventListener("change", (evento) => { formData(evento) })
 
 // Creamos la función formData para escuchar los eventos

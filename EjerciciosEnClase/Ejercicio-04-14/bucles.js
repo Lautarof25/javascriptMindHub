@@ -47,8 +47,29 @@ en el apartado B en algun momento sera falsa y finalizara la iteracion.
 Ejercicios
 1. Realizar un programa que permita el ingreso de un numero y muestre su tabla de
 multiplicar (Los primeros 10 multiplos).
+*/
+
+for (let i = 0; i < 10; i++) {
+    console.log(7 * i)
+}
+
+
+/*
 2. Realizar un programa que permita el ingreso de numeros los cuales se tienen que ir
 acumulando. El ingreso de datos terminara cuando el usuario ingrese un valor 0.
+*/
+
+// let acumulador = 0;
+// let valor = Number(prompt("Ingrese un valor"))
+
+// while (valor != 0) {
+//     acumulador += valor
+//     valor = Number(prompt("Ingrese un valor"))
+// }
+
+// console.log(acumulador);
+
+/*
 3. Realizar en juego de adivinar el numero del los ejercicios del tema anterior, en una
 variable guardar un numero que este en el rango 1 - 100. La persona debera poder
 ingresar numeros hasta adivinar el valor que se encuentre en dicha variable. Si el
@@ -59,7 +80,16 @@ que el usuario adivine el numero secreto. Por ultimo mostrar un mensaje de
 felicitaciones y decirle en cuantos intentos lo ha realizado.
 */
 
+// const numeroSecreto = 25;
+// let numeroUsuario = prompt("Adivine el número del 1 al 100")
 
+// while (numeroSecreto != numeroUsuario) {
+//     numeroSecreto < numeroUsuario 
+//             ?   alert("El numero ingresado debe ser más chico ") 
+//             :   alert("El numero ingresado debe ser más grande ")
+//     numeroUsuario = prompt("Ingrese nuevamente el numero")
+// }
+// alert("Felicitaciones, acertaste al número")
 
 /*
 4. Realizar un programa que permita decir si un numero es primo. Un numero es primo
@@ -69,6 +99,19 @@ como divisores 1, 2, 5, 10 y 25. No es primo. Con tener mas de 2 divisores el
 numero ya no es primo.
 */
 
+let esPrimo = true;
+let numero = 89;
+let divisor = 2;
+let mitadNumero = Math.floor(numero/2)
+
+while((divisor < mitadNumero+1) && esPrimo){
+    if(numero % divisor === 0){
+        esPrimo = false
+    }
+    divisor++;
+}
+
+console.log(`El numero ${numero} es primo: ${esPrimo}`)
 
 
 /*

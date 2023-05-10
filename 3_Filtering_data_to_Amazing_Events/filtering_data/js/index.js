@@ -7,7 +7,8 @@ const form = document.querySelector("#form");
 const all_checkbox = document.querySelector("#all");
 const first_time = ["all"];
 const inputSearch = document.querySelector("input[type=search]");
-const boton = document.querySelector("button[type=button]")
+const boton = document.querySelector("button[type=button]");
+let containerCheckboxes = document.querySelector("#container_checkboxes");
 let dataInput;
 let arrayIds = [];
 // Imprimo todas las tarjetas la primer vez que carga la página
@@ -21,6 +22,33 @@ eventos.forEach(evento => {
         ? eventosFuturos.push(evento)
         : eventosPasados.push(evento);
 })
+
+// Traigo los links del menú
+const idMenus = document.getElementsByClassName("nav-link")
+// Cuando hago click en un link, obtengo su id
+for (let i = 0; i < idMenus.length; i++) {
+    idMenus[i].addEventListener("click", function (e) {
+        printTemplate(e.target.id)
+    })
+
+}
+// Switch
+function printTemplate(id){
+    switch(id){
+        case "home":
+            printCards(first_time);
+            console.log("Estoy en home");
+            break;
+        case "upcoming":
+            printCards(eventosPasados);
+            console.log("Estoy en upcoming");
+            break;
+        case "past":
+            printCards(eventosPasados);
+            console.log("Estoy en past");
+            break;
+    }
+}
 
 // ----------------- EVENTO CHANGE PARA CHECKBOXES -------------------- //
 // Escuchamos el evento change en div con id form con la función formData
@@ -51,10 +79,6 @@ function formData(evento) {
     printCards(arrayChecked)
     // ----------------- EVENTO CHANGE PARA SEARCH -------------------- //
     // guardamos el texto del input search
-    /* PROBLEMA REPITIENDO TARJETAS ANTERIORES CON EL FILTRO DE TODAS*/
-    /* El patrón es: filtro correcto, pero toma las anteriores según su id
-        Si traigo id correspondiente a 3, trae también tarjetas con id 1,2
-    */
     dataInput = inputSearch.value.toLowerCase();
     // Si el input search no está vacio
     if (dataInput != "") {
@@ -106,6 +130,7 @@ function saveCardsById(card_items) {
             let titleNode = card_items[i].childNodes[3].childNodes[0].nodeValue
             let descriptionNode = card_items[i].childNodes[5].childNodes[0].nodeValue
             let priceNode = card_items[i].childNodes[7].childNodes[1].innerHTML
+            let idNode = card_items[i].childNodes[7].childNodes[3].href.slice(-1)
             // Falta ID y categoria
             // Falta reseatear el HTML y que encuentre más alternativas
             if (arrayIds.includes(card_items[i].childNodes[7].childNodes[3].href.slice(-1))) {
@@ -119,7 +144,7 @@ function saveCardsById(card_items) {
                  </p>
                  <div>
                      <p>${priceNode}</p>
-                     <a href="./pages/details.html?id=${cards.id}">see more...</a>
+                     <a href="./pages/details.html?id=${idNode}">see more...</a>
                  </div>
              </div>
              `
@@ -130,7 +155,7 @@ function saveCardsById(card_items) {
 }
 
 function printCards(events) {
-    // Propósito: Imprimir las tarjetas de eventos según los eventos **events** pasados
+    // Propósito: Imprimir las tarjetas de eventos según los eventos **events** dados
     // Parámetros: events - Array de eventos a imprimir
     // Precondiciones: Ninguna
 

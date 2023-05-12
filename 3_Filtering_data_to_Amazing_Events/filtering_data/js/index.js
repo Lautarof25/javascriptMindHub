@@ -1,15 +1,22 @@
-// Variables 
+// Obtenemos el contenedor cards de main
 const cards = document.querySelector("main .cards");
+// Obtenemos todas las tarjetas del contenedor cards
 const card_items = document.getElementsByClassName("card");
+// Obtenemos la fecha base
 const fechaBase = data.fechaActual;
+// Obtenemos los eventos
 const eventos = data.eventos;
+// Obtenemos el formulario que contiene los checkboxes y el input search
 const form = document.querySelector("#form");
+// Obtenemos el primer checkbox "all"
 const all_checkbox = document.querySelector("#all");
+// Creo un array temporal para simular que "all" está chequeado
 const first_time = ["all"];
+// Obtenemos el input search
 const inputSearch = document.querySelector("input[type=search]");
-const boton = document.querySelector("button[type=button]");
-let containerCheckboxes = document.querySelector("#container_checkboxes");
+const boton = document.querySelector("button[type=button]")
 let dataInput;
+// Creo un array de id con las tarjetas
 let arrayIds = [];
 // Imprimo todas las tarjetas la primer vez que carga la página
 printCards(first_time);
@@ -18,8 +25,12 @@ let eventosPasados = [];
 let eventosFuturos = [];
 // Recorro los eventos
 eventos.forEach(evento => {
+    // Recorra cada fecha de los eventos
+    // Si es mayor a la fecha base
     evento.date > fechaBase
+        // Agregarlos a eventos futuros
         ? eventosFuturos.push(evento)
+        // Sino, agregarlos a eventos pasados
         : eventosPasados.push(evento);
 })
 
@@ -107,7 +118,7 @@ function searchIdByNameAndDescription(card_items) {
         // Creo variables temporales para la ruta de name, description,id y category
         let nameEventLower = (card_items[i].childNodes[3].childNodes[0].nodeValue).toLowerCase();
         let descriptionEventLower = (card_items[i].childNodes[5].childNodes[0].nodeValue).toLowerCase();
-        let idEvent = card_items[i].childNodes[7].childNodes[3].href.slice(-1);
+        let idEvent = card_items[i].childNodes[8].nextSibling.className;
         // Si el name o description tiene el texto guardado
         if (nameEventLower.includes(dataInput) || descriptionEventLower.includes(dataInput)) {
             // Guardo el id en un arrayIds
@@ -133,7 +144,7 @@ function saveCardsById(card_items) {
             let idNode = card_items[i].childNodes[7].childNodes[3].href.slice(-1)
             // Falta ID y categoria
             // Falta reseatear el HTML y que encuentre más alternativas
-            if (arrayIds.includes(card_items[i].childNodes[7].childNodes[3].href.slice(-1))) {
+            if (arrayIds.includes(card_items[i].childNodes[8].nextSibling.className)) {
                 htmlNewCards += `
              <div class="card">
                  <div class="img">
@@ -146,6 +157,8 @@ function saveCardsById(card_items) {
                      <p>${priceNode}</p>
                      <a href="./pages/details.html?id=${idNode}">see more...</a>
                  </div>
+                 <p style="display:none;" class="${cards.id}"></p>
+                 <p style="display:none;" class="${cards.category}"></p>
              </div>
              `
             }
@@ -180,7 +193,8 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html?id=${evento.id}">see more...</a>
                   </div>
-
+                  <p style="display:none;" class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.category}"></p>
               </div>
               `
         })
@@ -208,6 +222,8 @@ function printCards(events) {
                       <p>Price: ${evento.price}</p>
                       <a href="./pages/details.html?id=${evento.id}">see more...</a>
                   </div>
+                  <p style="display:none;" class="${evento.id}"></p>
+                  <p style="display:none;" class="${evento.category}"></p>
               </div>
               `
             }

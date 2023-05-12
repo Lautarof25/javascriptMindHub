@@ -11,7 +11,7 @@ var idEventos = location.search.split("?id=").filter(Number)-1
 function printDetails(id){
     // Propósito: Imprimir la tarjeta de detalle en base a su id
     card_detail.innerHTML += `
-    <img class="img_detail" src="../Images/${getFinalUrlImage(id)}" alt="${eventos[id].name}">
+    <img class="img_detail" src="../Images/${getFinalUrlImage(id)}" alt="product">
     <div>
         <h1>${eventos[id].name}</h1>
         <span>Date: ${eventos[id].date}</span>
@@ -21,7 +21,7 @@ function printDetails(id){
             <li>Place: ${eventos[id].place} C</li>
             <li>Capacity: ${eventos[id].capacity}</li>
             <!-- If upcoming -Estimate- else assistance -->
-            <li>Estimate: ${eventos[id].assistance || eventos[id].estimate}</li>
+            <li>Estimate: ${eventos[id].assistance}</li>
             <li>Price: ${eventos[id].price}</li>
         </ul>
     </div>
